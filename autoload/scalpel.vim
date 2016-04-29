@@ -34,6 +34,6 @@ function! scalpel#substitute(patterns) abort
   " Loop around to top of file and continue.
   " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
   if line("''") > 1
-    1,''-&&"
+    1,''-&&
   endif
 endfunction
