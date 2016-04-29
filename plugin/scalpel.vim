@@ -12,10 +12,22 @@ let g:ScalpelLoaded = 1
 let s:cpoptions = &cpoptions
 set cpoptions&vim
 
-" Change all instances of current word (mnemonic: edit).
-nnoremap <Leader>e :Substitute/\v<<C-R>=expand('<cword>')<CR>>//<Left>
+let s:command=get(g:, 'ScalpelCommand', 'Substitute')
+if s:command !=# ''
+  execute 'command! -nargs=1 ' . s:command . ' call scalpel#substitute(<q-args>)'
+endif
 
-command! -nargs=1 Substitute call scalpel#substitute(<q-args>)
+" Change all instances of current word (mnemonic: edit).
+execute 'nnoremap <Plug>(ScalpelSubstitute) :' .
+      \ s:command .
+      \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
+
+let s:map=get(g:, 'ScalpelMap', 1)
+if s:map
+  if !hasmapto('<Plug>(ScalpelSubstitute)') && maparg('<leader>e', 'n') ==# ''
+    nmap <unique> <Leader>e <Plug>(ScalpelSubstitute)
+  endif
+endif
 
 " Restore 'cpoptions' to its former value.
 let &cpoptions = s:cpoptions
