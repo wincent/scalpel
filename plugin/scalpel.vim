@@ -12,7 +12,7 @@ let g:ScalpelLoaded = 1
 let s:cpoptions = &cpoptions
 set cpoptions&vim
 
-let s:command=get(g:, 'ScalpelCommand', 'Substitute')
+let s:command=get(g:, 'ScalpelCommand', 'Scalpel')
 if s:command ==# ''
   finish
 else
