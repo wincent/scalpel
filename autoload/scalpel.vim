@@ -1,4 +1,6 @@
-" Does the heavy-lifting for the quick find-and-replace command (:Substitute).
+" Copyright 2016-present Greg Hurrell. All rights reserved.
+" Licensed under the terms of the MIT license.
+
 function! scalpel#substitute(patterns) abort
   if match(a:patterns, '\v^/[^/]*/[^/]*/$') != 0
     echomsg 'Invalid patterns: ' . a:patterns
