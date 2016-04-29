@@ -1,5 +1,5 @@
 " Does the heavy-lifting for the quick find-and-replace command (:Substitute).
-function! mappings#substitute(patterns) abort
+function! scalpel#substitute(patterns) abort
   if match(a:patterns, '\v^/[^/]*/[^/]*/$') != 0
     echomsg 'Invalid patterns: ' . a:patterns
     echomsg 'Expected patterns of the form "/foo/bar/".'
