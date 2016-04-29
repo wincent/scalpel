@@ -28,12 +28,20 @@ function! scalpel#substitute(patterns) abort
     if l:last ==# 'l' || l:last ==# 'q' || l:last ==# ''
       " User bailed.
       return
+    elseif l:last ==# 'a'
+      " Loop around to top of file and continue.
+      " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
+      if line("''") > 1
+        " Drop c flag.
+        1,''-&ge
+      endif
+     return
     endif
   endif
 
   " Loop around to top of file and continue.
   " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
   if line("''") > 1
-    1,''-&&
+    1,''-&gce
   endif
 endfunction
