@@ -13,7 +13,14 @@ let s:cpoptions = &cpoptions
 set cpoptions&vim
 
 let s:command=get(g:, 'ScalpelCommand', 'Substitute')
-if s:command !=# ''
+if s:command ==# ''
+  finish
+else
+  if match(s:command, '\v\C^[A-Z][A-Za-z]*$') == -1
+    echoerr 'g:ScalpelCommand must contain only letters and start with a ' .
+          \ 'capital letter'
+    finish
+  endif
   execute 'command! -nargs=1 ' . s:command . ' call scalpel#substitute(<q-args>)'
 endif
 
