@@ -20,10 +20,15 @@ elseif match(s:command, '\v\C^[A-Z][A-Za-z]*$') == -1
         \ 'capital letter'
   finish
 endif
-execute 'command! -nargs=1 ' . s:command . ' call scalpel#substitute(<q-args>)'
+execute 'command! -nargs=1 -range '
+      \ . s:command
+      \ . ' call scalpel#substitute(<q-args>, <line1>, <line2>, <count>)'
 
 " Change all instances of current word (mnemonic: edit).
 execute 'nnoremap <Plug>(Scalpel) :' .
+      \ s:command .
+      \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
+execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ s:command .
       \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
 
@@ -31,6 +36,9 @@ let s:map=get(g:, 'ScalpelMap', 1)
 if s:map
   if !hasmapto('<Plug>(Scalpel)') && maparg('<leader>e', 'n') ==# ''
     nmap <unique> <Leader>e <Plug>(Scalpel)
+  endif
+  if !hasmapto('<Plug>(ScalpelVisual)') && maparg('<leader>e', 'v') ==# ''
+    vmap <unique> <Leader>e <Plug>(ScalpelVisual)
   endif
 endif
 
