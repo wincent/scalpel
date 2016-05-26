@@ -24,13 +24,24 @@ execute 'command! -nargs=1 -range '
       \ . s:command
       \ . ' call scalpel#substitute(<q-args>, <line1>, <line2>, <count>)'
 
+" Need to remember last-seen cursor position because `getcurpos()` is not useful
+" in VISUAL modes.
+let s:curpos=getcurpos()
+autocmd CursorMoved * let s:curpos=getcurpos()
+
+" Local accessor so that we can reference the script-local variable from inside
+" a mapping (as per http://superuser.com/questions/566720).
+function! s:GetCurpos()
+  return s:curpos
+endfunction
+
 " Change all instances of current word (mnemonic: edit).
 execute 'nnoremap <Plug>(Scalpel) :' .
       \ s:command .
       \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
 execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ s:command .
-      \ "/\\v<<C-R>=scalpel#cword()<CR>>//<Left>"
+      \ "/\\v<<C-R>=scalpel#cword(<SID>GetCurpos())<CR>>//<Left>"
 
 let s:map=get(g:, 'ScalpelMap', 1)
 if s:map

@@ -1,12 +1,11 @@
 " Copyright 2016-present Greg Hurrell. All rights reserved.
 " Licensed under the terms of the MIT license.
 
-function! scalpel#cword() abort
+function! scalpel#cword(curpos) abort
   " <cword> Doesn't work usefully in visual mode (always returns first word),
   " so fake it.
-  let l:pos=getcurpos()
-  let l:line=getline(l:pos[1])
-  let l:col=l:pos[2]
+  let l:line=getline(a:curpos[1])
+  let l:col=a:curpos[2]
   let l:chars=split(l:line, '\zs')
   let l:word=[]
 
