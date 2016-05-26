@@ -27,7 +27,10 @@ execute 'command! -nargs=1 -range '
 " Need to remember last-seen cursor position because `getcurpos()` is not useful
 " in VISUAL modes.
 let s:curpos=getcurpos()
-autocmd CursorMoved * let s:curpos=getcurpos()
+augroup Scalpel
+  autocmd!
+  autocmd CursorMoved * let s:curpos=getcurpos()
+augroup END
 
 " Local accessor so that we can reference the script-local variable from inside
 " a mapping (as per http://superuser.com/questions/566720).
