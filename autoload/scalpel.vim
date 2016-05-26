@@ -1,6 +1,36 @@
 " Copyright 2016-present Greg Hurrell. All rights reserved.
 " Licensed under the terms of the MIT license.
 
+function! scalpel#cword() abort
+  " <cword> Doesn't work usefully in visual mode (always returns first word),
+  " so fake it.
+  let l:pos=getcurpos()
+  let l:line=getline(l:pos[1])
+  let l:col=l:pos[2]
+  let l:chars=split(l:line, '\zs')
+  let l:word=[]
+
+  " Look for keyword characters rightwards.
+  for l:char in l:chars[l:col:]
+    if match(l:char, '\k') != -1
+      call add(l:word, l:char)
+    else
+      break
+    endif
+  endfor
+
+  " Look for keyword characters leftwards.
+  for l:char in reverse(l:chars[:l:col - 1])
+    if match(l:char, '\k') != -1
+      call insert(l:word, l:char, 0)
+    else
+      break
+    endif
+  endfor
+
+  return join(l:word, '')
+endfunction
+
 function! scalpel#substitute(patterns, line1, line2, count) abort
   if a:count == -1
     " No range supplied, operate on whole buffer.

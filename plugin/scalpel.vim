@@ -30,7 +30,7 @@ execute 'nnoremap <Plug>(Scalpel) :' .
       \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
 execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ s:command .
-      \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
+      \ "/\\v<<C-R>=scalpel#cword()<CR>>//<Left>"
 
 let s:map=get(g:, 'ScalpelMap', 1)
 if s:map
