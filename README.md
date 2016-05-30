@@ -1,4 +1,6 @@
-# Intro
+# scalpel
+
+## Intro
 
 Scalpel provides a streamlined shortcut for replacing all instances of the word currently under the cursor throughout a file.
 
@@ -55,7 +57,7 @@ let g:ScalpelLoaded=1
 
 in your `~/.vimrc`.
 
-# Installation
+## Installation
 
 To install Scalpel, use your plug-in management system of choice.
 
@@ -80,7 +82,7 @@ To generate help tags under Pathogen, you can do so from inside Vim with:
 :call pathogen#helptags()
 ```
 
-# Website
+## Website
 
 The official Scalpel source code repo is at:
 
@@ -96,7 +98,7 @@ Official releases are listed at:
 
 http://www.vim.org/scripts/script.php?script_id=5381
 
-# License
+## License
 
 Copyright (c) 2016-present Greg Hurrell
 
@@ -106,13 +108,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# Development
+## Development
 
-## Contributing patches
+### Contributing patches
 
 Patches can be sent via mail to greg@hurrell.net, or as GitHub pull requests at: https://github.com/wincent/scalpel/pulls
 
-## Cutting a new release
+### Cutting a new release
 
 At the moment the release process is manual:
 
@@ -145,16 +147,16 @@ git archive -o scalpel-$VERSION.zip HEAD -- .
 
 - Upload to http://www.vim.org/scripts/script.php?script_id=5381
 
-# Authors
+## Authors
 
 Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
-# History
+## History
 
-## 0.2 (not yet released)
+### 0.2 (not yet released)
 
 - Support visual mode.
 
-## 0.1 (29 April 2016)
+### 0.1 (29 April 2016)
 
 - Initial release.
