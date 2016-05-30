@@ -12,7 +12,7 @@ In normal mode pressing `<Leader>e` (mnemonic: "edit") will display a prompt pre
 
 Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting at the current word (unlike a normal `:%s` command, which starts at the top of the file).
 
-Scalpel works similarly in visual mode, except that it scopes itself to the current visual selection rather than operation over the entire file.
+Scalpel works similarly in visual mode, except that it scopes itself to the current visual selection rather than operating over the entire file.
 
 Note that `:Scalpel` just calls through to an underlying `scalpel#substitute` function that does the real work, ultimately calling Vim's own `:substitute`. As such, be aware that whatever changes you make to the command-line prior to pressing `<Enter>` must keep it a valid pattern, or bad things will happen.
 

@@ -21,7 +21,7 @@
 " the file).
 "
 " Scalpel works similarly in visual mode, except that it scopes itself to the
-" current visual selection rather than operation over the entire file.
+" current visual selection rather than operating over the entire file.
 "
 " Note that `:Scalpel` just calls through to an underlying `scalpel#substitute`
 " function that does the real work, ultimately calling Vim's own `:substitute`.
