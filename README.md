@@ -1,4 +1,4 @@
-# scalpel
+![Scalpel](https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.png)
 
 ## Intro
 
