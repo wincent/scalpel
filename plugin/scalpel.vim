@@ -9,7 +9,9 @@
 " Scalpel provides a streamlined shortcut for replacing all instances of the
 " word currently under the cursor throughout a file.
 "
-" In normal mode pressing `<Leader>e` (mnemonic: "edit") will display a prompt pre-populated with the current word and with the cursor placed so that you can start typing the desired replacement:
+" In normal mode pressing `<Leader>e` (mnemonic: "edit") will display a prompt
+" pre-populated with the current word and with the cursor placed so that you can
+" start typing the desired replacement:
 "
 "
 " ```
