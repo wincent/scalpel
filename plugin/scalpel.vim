@@ -157,6 +157,12 @@
 "
 " - Perform final sanity checks and manual testing.
 " - Update the [scalpel-history](#user-content-scalpel-history) section of the documentation.
+" - Regenerate the documentation:
+"
+" ```
+" docvim README.md doc/scalpel.txt
+" ```
+"
 " - Verify clean work tree:
 "
 " ```
