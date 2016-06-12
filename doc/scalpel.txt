@@ -1,4 +1,4 @@
-*scalpel.txt*    Scalpel plug-in for Vim      *scalpel*
+*scalpel.txt*                   Scalpel plug-in for Vim                  *scalpel*
 
 CONTENTS                                                      *scalpel-contents*
 
