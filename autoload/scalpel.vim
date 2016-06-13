@@ -51,9 +51,12 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
   endif
   normal! qs
   redir => l:replacements
+  let l:report=&report
   try
+    set report=10000
     execute l:currentline . ',' . l:lastline . 's' . a:patterns . 'gce#'
   catch /^Vim:Interrupt$/
+    execute 'set report=' . l:report
     return
   finally
     normal! q
@@ -84,5 +87,6 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
   " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
   if l:currentline > l:firstline
     execute l:firstline . ',' . l:currentline . '-&gce'
+    execute 'set report=' . l:report
   endif
 endfunction
