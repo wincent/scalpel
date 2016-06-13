@@ -196,7 +196,7 @@
 "
 " # History
 "
-" ## 0.2 (not yet released)
+" ## 0.2 (13 June 2016)
 "
 " - Support visual mode.
 " - Do not show "N substitutions on N lines" messages.

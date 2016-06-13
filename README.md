@@ -159,9 +159,10 @@ Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
 
-### 0.2 (not yet released)<a name="scalpel-02-not-yet-released" href="#user-content-scalpel-02-not-yet-released"></a>
+### 0.2 (13 June 2016)<a name="scalpel-02-13-june-2016" href="#user-content-scalpel-02-13-june-2016"></a>
 
 - Support visual mode.
+- Do not show "N substitutions on N lines" messages.
 
 ### 0.1 (29 April 2016)<a name="scalpel-01-29-april-2016" href="#user-content-scalpel-01-29-april-2016"></a>
 
