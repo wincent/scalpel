@@ -41,7 +41,20 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
     let l:lastline=a:line2 >= a:line2 ? a:line2 : a:line1
     let l:currentline=l:firstline
   endif
-  if match(a:patterns, '\v^/[^/]*/[^/]*/$') != 0
+
+  " As per `:h E146`, can use any single-byte non-alphanumeric character as
+  " delimiter except for backslash, quote, and vertical bar.
+  "
+  " Note there seems to be a bug in the Vim regex implementation (present in
+  " both versions of the engine; see `:h two-engines`) wherein the presence of a
+  " backslash anywhere in the text causes the pattern not to match. Happens in
+  " both Vim and Neovim. Backslashes are common (consider \v) so this is a big
+  " deal.
+  "
+  " Workaround is to use less precise .* in the pattern instead of [^\1]*
+  " Note that the second instance of [^\1]* works fine; only the first needs to
+  " be replaced.
+  if match(a:patterns, '\v^([^"\\|A-Za-z0-9 ]).*\1[^\1]*\1$') != 0
     echomsg 'Invalid patterns: ' . a:patterns
     echomsg 'Expected patterns of the form "/foo/bar/".'
     return
