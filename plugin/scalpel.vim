@@ -228,12 +228,20 @@ execute 'command! -nargs=1 -range '
       \ . s:command
       \ . ' call scalpel#substitute(<q-args>, <line1>, <line2>, <count>)'
 
+function! s:GetCurposCompat()
+  if exists('*getcurpos')
+    return getcurpos()
+  else
+    return getpos('.')
+  endif
+endfunction
+
 " Need to remember last-seen cursor position because `getcurpos()` is not useful
 " in VISUAL modes.
-let s:curpos=getcurpos()
+let s:curpos=s:GetCurposCompat()
 augroup Scalpel
   autocmd!
-  autocmd CursorMoved * let s:curpos=getcurpos()
+  autocmd CursorMoved * let s:curpos=s:GetCurposCompat()
 augroup END
 
 " Local accessor so that we can reference the script-local variable from inside
