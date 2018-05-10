@@ -4,7 +4,7 @@
 
 Scalpel provides a streamlined shortcut for replacing all instances of the word currently under the cursor throughout a file.
 
-In normal mode pressing `<Leader>e` (mnemonic: "edit") will display a prompt pre-populated with the current word and with the cursor placed so that you can start typing the desired replacement:
+In normal mode pressing `<Leader>e` (mnemonic: &quot;edit&quot;) will display a prompt pre-populated with the current word and with the cursor placed so that you can start typing the desired replacement:
 
 ```
 :Scalpel/\v<foo>//
@@ -57,11 +57,12 @@ let g:ScalpelLoaded=1
 
 in your `~/.vimrc`.
 
+
 ## Installation<a name="scalpel-installation" href="#user-content-scalpel-installation"></a>
 
 To install Scalpel, use your plug-in management system of choice.
 
-If you don't have a "plug-in management system of choice" and your version of Vim has `packages` support (ie. `+packages` appears in the output of `:version`) then you can simply place the plugin at a location under your `'packpath'` (eg. `~/.vim/pack/bundle/start/scalpel` or similar).
+If you don't have a &quot;plug-in management system of choice&quot; and your version of Vim has `packages` support (ie. `+packages` appears in the output of `:version`) then you can simply place the plugin at a location under your `'packpath'` (eg. `~/.vim/pack/bundle/start/scalpel` or similar).
 
 For older versions of Vim, I recommend [Pathogen](https://github.com/tpope/vim-pathogen) due to its simplicity and robustness. Assuming that you have Pathogen installed and configured, and that you want to install Scalpel into `~/.vim/bundle`, you can do so with:
 
@@ -82,6 +83,7 @@ To generate help tags under Pathogen, you can do so from inside Vim with:
 :call pathogen#helptags()
 ```
 
+
 ## Website<a name="scalpel-website" href="#user-content-scalpel-website"></a>
 
 The official Scalpel source code repo is at:
@@ -98,21 +100,25 @@ Official releases are listed at:
 
 http://www.vim.org/scripts/script.php?script_id=5381
 
+
 ## License<a name="scalpel-license" href="#user-content-scalpel-license"></a>
 
 Copyright (c) 2016-present Greg Hurrell
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 
 ## Development<a name="scalpel-development" href="#user-content-scalpel-development"></a>
+
 
 ### Contributing patches<a name="scalpel-contributing-patches" href="#user-content-scalpel-contributing-patches"></a>
 
 Patches can be sent via mail to greg@hurrell.net, or as GitHub pull requests at: https://github.com/wincent/scalpel/pulls
+
 
 ### Cutting a new release<a name="scalpel-cutting-a-new-release" href="#user-content-scalpel-cutting-a-new-release"></a>
 
@@ -153,16 +159,25 @@ git archive -o scalpel-$VERSION.zip HEAD -- .
 
 - Upload to http://www.vim.org/scripts/script.php?script_id=5381
 
+
 ## Authors<a name="scalpel-authors" href="#user-content-scalpel-authors"></a>
 
-Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
+Scalpel is written and maintained by Greg Hurrell &lt;greg@hurrell.net&gt;.
+
 
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
+
+
+### 0.3 (10 May 2018)<a name="scalpel-03-10-may-2018" href="#user-content-scalpel-03-10-may-2018"></a>
+
+- Fix compatibility with older versions of Vim that don't implement <strong>`getcurpos()`</strong>.
+
 
 ### 0.2 (13 June 2016)<a name="scalpel-02-13-june-2016" href="#user-content-scalpel-02-13-june-2016"></a>
 
 - Support visual mode.
-- Do not show "N substitutions on N lines" messages.
+- Do not show &quot;N substitutions on N lines&quot; messages.
+
 
 ### 0.1 (29 April 2016)<a name="scalpel-01-29-april-2016" href="#user-content-scalpel-01-29-april-2016"></a>
 

@@ -196,6 +196,11 @@
 "
 " # History
 "
+" ## 0.3 (10 May 2018)
+"
+" - Fix compatibility with older versions of Vim that don't implement
+"   |getcurpos()|.
+"
 " ## 0.2 (13 June 2016)
 "
 " - Support visual mode.
