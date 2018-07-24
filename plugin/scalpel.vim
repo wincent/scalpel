@@ -196,6 +196,11 @@
 "
 " # History
 "
+" ## 0.4 (23 July 2018)
+"
+" - Fix problem with replacement patterns containing the number 1
+"   (GitHub issue #7).
+"
 " ## 0.3 (10 May 2018)
 "
 " - Fix compatibility with older versions of Vim that don't implement

@@ -168,6 +168,11 @@ Scalpel is written and maintained by Greg Hurrell &lt;greg@hurrell.net&gt;.
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
 
 
+### 0.4 (23 July 2018)<a name="scalpel-04-23-july-2018" href="#user-content-scalpel-04-23-july-2018"></a>
+
+- Fix problem with replacement patterns containing the number 1 (GitHub issue #7).
+
+
 ### 0.3 (10 May 2018)<a name="scalpel-03-10-may-2018" href="#user-content-scalpel-03-10-may-2018"></a>
 
 - Fix compatibility with older versions of Vim that don't implement <strong>`getcurpos()`</strong>.
