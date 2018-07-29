@@ -168,6 +168,11 @@ Scalpel is written and maintained by Greg Hurrell &lt;greg@hurrell.net&gt;.
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
 
 
+### 0.5 (28 July 2018)<a name="scalpel-05-28-july-2018" href="#user-content-scalpel-05-28-july-2018"></a>
+
+- Fix problem with <strong>`Visual`</strong> mode operation on older versions of Vim (GitHub issue #8).
+
+
 ### 0.4 (23 July 2018)<a name="scalpel-04-23-july-2018" href="#user-content-scalpel-04-23-july-2018"></a>
 
 - Fix problem with replacement patterns containing the number 1 (GitHub issue #7).

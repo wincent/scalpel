@@ -196,6 +196,11 @@
 "
 " # History
 "
+" ## 0.5 (28 July 2018)
+"
+" - Fix problem with |Visual| mode operation on older versions of Vim
+"   (GitHub issue #8).
+"
 " ## 0.4 (23 July 2018)
 "
 " - Fix problem with replacement patterns containing the number 1
