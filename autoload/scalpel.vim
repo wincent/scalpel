@@ -10,7 +10,7 @@ function! scalpel#cword(curpos) abort
   let l:word=[]
 
   " Look for keyword characters rightwards.
-  for l:char in l:chars[l:col:]
+  for l:char in l:chars[(l:col):]
     if match(l:char, '\k') != -1
       call add(l:word, l:char)
     else
@@ -19,7 +19,7 @@ function! scalpel#cword(curpos) abort
   endfor
 
   " Look for keyword characters leftwards.
-  for l:char in reverse(l:chars[:l:col - 1])
+  for l:char in reverse(l:chars[:(l:col) - 1])
     if match(l:char, '\k') != -1
       call insert(l:word, l:char, 0)
     else
