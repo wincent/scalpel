@@ -30,6 +30,10 @@ function! scalpel#cword(curpos) abort
   return join(l:word, '')
 endfunction
 
+function s:g()
+  return &gdefault ? '' : 'g'
+endfunction
+
 function! scalpel#substitute(patterns, line1, line2, count) abort
   if a:count == -1
     " No range supplied, operate on whole buffer.
@@ -41,6 +45,8 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
     let l:lastline=a:line2 >= a:line2 ? a:line2 : a:line1
     let l:currentline=l:firstline
   endif
+
+  let l:g=s:g()
 
   " As per `:h E146`, can use any single-byte non-alphanumeric character as
   " delimiter except for backslash, quote, and vertical bar.
@@ -57,7 +63,7 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
   let l:report=&report
   try
     set report=10000
-    execute l:currentline . ',' . l:lastline . 's' . a:patterns . 'gce#'
+    execute l:currentline . ',' . l:lastline . 's' . a:patterns . l:g . 'ce#'
   catch /^Vim:Interrupt$/
     execute 'set report=' . l:report
     return
@@ -80,7 +86,7 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
       " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
       if l:currentline > l:firstline
         " Drop c flag.
-        execute l:firstline . ',' . l:currentline . '-&gce'
+        execute l:firstline . ',' . l:currentline . l:g . '-&ce'
       endif
      return
     endif
@@ -89,7 +95,7 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
   " Loop around to top of range/file and continue.
   " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
   if l:currentline > l:firstline
-    execute l:firstline . ',' . l:currentline . '-&gce'
+    execute l:firstline . ',' . l:currentline . l:g . '-&ce'
     execute 'set report=' . l:report
   endif
 endfunction
