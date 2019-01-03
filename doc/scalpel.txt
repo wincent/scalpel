@@ -4,11 +4,12 @@ CONTENTS                                                      *scalpel-contents*
 
 1. Intro            |scalpel-intro|
 2. Installation     |scalpel-installation|
-3. Website          |scalpel-website|
-4. License          |scalpel-license|
-5. Development      |scalpel-development|
-6. Authors          |scalpel-authors|
-7. History          |scalpel-history|
+3. FAQ              |scalpel-faq|
+4. Website          |scalpel-website|
+5. License          |scalpel-license|
+6. Development      |scalpel-development|
+7. Authors          |scalpel-authors|
+8. History          |scalpel-history|
 
 INTRO                                                            *scalpel-intro*
 
@@ -27,6 +28,12 @@ the file).
 
 Scalpel works similarly in visual mode, except that it scopes itself to the
 current visual selection rather than operating over the entire file.
+
+Screencasts that show Scalpel in action:
+
+- https://youtu.be/YwMgnmZNWXA: "Vim screencast #13: Multiple Cursors"
+- https://youtu.be/7Bx_mLDBtRc: "Vim screencast #14: *Ncgn"
+- https://youtu.be/iNVyCPPYFzc: "Vim screencast #21: Scalpel update"
 
 Note that `:Scalpel` just calls through to an underlying `scalpel#substitute`
 function that does the real work, ultimately calling Vim's own `:substitute`.
@@ -92,6 +99,27 @@ To generate help tags under Pathogen, you can do so from inside Vim with:
 >
     :call pathogen#helptags()
 <
+FAQ                                                                *scalpel-faq*
+
+Why use Scalpel rather than a built-in alternative? ~
+
+Scalpel is a lightweight plug-in that provides subtle but valuable
+improvements to the experience you'd get by using Vim's built-in
+functionality.
+
+Compared to writing a |:substitute| command manually:
+
+- Scalpel is quickly activated by a mapping.
+- Scalpel prepopulates the search pattern with the word currently under the
+  cursor.
+- Scalpel avoids a jarring jump to the top of the file, instead starting
+  replacements at the current location.
+
+Compared to a mapping such as "*Ncgn":
+
+- Scalpel allows you to preview the location at which each change will occur
+  instead of performing the change blindly.
+
 WEBSITE                                                        *scalpel-website*
 
 The official Scalpel source code repo is at:
@@ -172,6 +200,10 @@ AUTHORS                                                        *scalpel-authors*
 Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 HISTORY                                                        *scalpel-history*
+
+1.0 (3 January 2019) ~
+
+- Perform multiple replacements per line even when |'gdefault'| is on.
 
 0.5 (28 July 2018) ~
 

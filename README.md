@@ -14,6 +14,12 @@ Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting a
 
 Scalpel works similarly in visual mode, except that it scopes itself to the current visual selection rather than operating over the entire file.
 
+Screencasts that show Scalpel in action:
+
+- https://youtu.be/YwMgnmZNWXA: &quot;Vim screencast #13: Multiple Cursors&quot;
+- https://youtu.be/7Bx_mLDBtRc: &quot;Vim screencast #14: *Ncgn&quot;
+- https://youtu.be/iNVyCPPYFzc: &quot;Vim screencast #21: Scalpel update&quot;
+
 Note that `:Scalpel` just calls through to an underlying `scalpel#substitute` function that does the real work, ultimately calling Vim's own `:substitute`. As such, be aware that whatever changes you make to the command-line prior to pressing `<Enter>` must keep it a valid pattern, or bad things will happen.
 
 The mapping can be suppressed by setting:
@@ -82,6 +88,24 @@ To generate help tags under Pathogen, you can do so from inside Vim with:
 ```
 :call pathogen#helptags()
 ```
+
+
+## FAQ<a name="scalpel-faq" href="#user-content-scalpel-faq"></a>
+
+
+### Why use Scalpel rather than a built-in alternative?<a name="scalpel-why-use-scalpel-rather-than-a-built-in-alternative" href="#user-content-scalpel-why-use-scalpel-rather-than-a-built-in-alternative"></a>
+
+Scalpel is a lightweight plug-in that provides subtle but valuable improvements to the experience you'd get by using Vim's built-in functionality.
+
+Compared to writing a <strong>`:substitute`</strong> command manually:
+
+- Scalpel is quickly activated by a mapping.
+- Scalpel prepopulates the search pattern with the word currently under the cursor.
+- Scalpel avoids a jarring jump to the top of the file, instead starting replacements at the current location.
+
+Compared to a mapping such as &quot;*Ncgn&quot;:
+
+- Scalpel allows you to preview the location at which each change will occur instead of performing the change blindly.
 
 
 ## Website<a name="scalpel-website" href="#user-content-scalpel-website"></a>
@@ -166,6 +190,11 @@ Scalpel is written and maintained by Greg Hurrell &lt;greg@hurrell.net&gt;.
 
 
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
+
+
+### 1.0 (3 January 2019)<a name="scalpel-10-3-january-2019" href="#user-content-scalpel-10-3-january-2019"></a>
+
+- Perform multiple replacements per line even when <strong>`'gdefault'`</strong> is on.
 
 
 ### 0.5 (28 July 2018)<a name="scalpel-05-28-july-2018" href="#user-content-scalpel-05-28-july-2018"></a>

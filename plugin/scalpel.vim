@@ -25,6 +25,12 @@
 " Scalpel works similarly in visual mode, except that it scopes itself to the
 " current visual selection rather than operating over the entire file.
 "
+" Screencasts that show Scalpel in action:
+"
+" - https://youtu.be/YwMgnmZNWXA: "Vim screencast #13: Multiple Cursors"
+" - https://youtu.be/7Bx_mLDBtRc: "Vim screencast #14: *Ncgn"
+" - https://youtu.be/iNVyCPPYFzc: "Vim screencast #21: Scalpel update"
+"
 " Note that `:Scalpel` just calls through to an underlying `scalpel#substitute`
 " function that does the real work, ultimately calling Vim's own `:substitute`.
 " As such, be aware that whatever changes you make to the command-line prior to
@@ -106,6 +112,27 @@
 " ```
 " :call pathogen#helptags()
 " ```
+"
+" # FAQ
+"
+" ## Why use Scalpel rather than a built-in alternative?
+"
+" Scalpel is a lightweight plug-in that provides subtle but valuable
+" improvements to the experience you'd get by using Vim's built-in
+" functionality.
+"
+" Compared to writing a |:substitute| command manually:
+"
+" - Scalpel is quickly activated by a mapping.
+" - Scalpel prepopulates the search pattern with the word currently under the
+"   cursor.
+" - Scalpel avoids a jarring jump to the top of the file, instead starting
+"   replacements at the current location.
+"
+" Compared to a mapping such as "*Ncgn":
+"
+" - Scalpel allows you to preview the location at which each change will occur
+"   instead of performing the change blindly.
 "
 " # Website
 "
@@ -195,6 +222,10 @@
 " Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
 "
 " # History
+"
+" ## 1.0 (3 January 2019)
+"
+" - Perform multiple replacements per line even when |'gdefault'| is on.
 "
 " ## 0.5 (28 July 2018)
 "
