@@ -86,7 +86,7 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
       " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
       if l:currentline > l:firstline
         " Drop c flag.
-        execute l:firstline . ',' . l:currentline . l:g . '-&ce'
+        execute l:firstline . ',' . l:currentline . '-&' . l:g . 'ce'
       endif
      return
     endif
@@ -95,7 +95,7 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
   " Loop around to top of range/file and continue.
   " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
   if l:currentline > l:firstline
-    execute l:firstline . ',' . l:currentline . l:g . '-&ce'
+    execute l:firstline . ',' . l:currentline . '-&' .l:g . 'ce'
     execute 'set report=' . l:report
   endif
 endfunction
