@@ -34,6 +34,25 @@ function s:g()
   return &gdefault ? '' : 'g'
 endfunction
 
+" a:lastline is effectively reserved (see `:h a:lastline`), so use _lastline
+" instead.
+function s:replacements(currentline, _lastline, patterns, g)
+  let s:report=&report
+  try
+    set report=10000
+    execute a:currentline . ',' . a:_lastline . 's' . a:patterns . a:g . 'ce#'
+  catch /^Vim:Interrupt$/
+    execute 'set report=' . s:report
+    return
+  finally
+    normal! q
+    let s:transcript=getreg('s')
+    if exists('s:register')
+      call setreg('s', s:register)
+    endif
+  endtry
+endfunction
+
 function! scalpel#substitute(patterns, line1, line2, count) abort
   if a:count == -1
     " No range supplied, operate on whole buffer.
@@ -56,28 +75,23 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
     return
   endif
   if getregtype('s') != ''
-    let l:register=getreg('s')
+    let s:register=getreg('s')
+  elseif exists('s:register')
+    unlet s:register
   endif
   normal! qs
-  redir => l:replacements
-  let l:report=&report
-  try
-    set report=10000
-    execute l:currentline . ',' . l:lastline . 's' . a:patterns . l:g . 'ce#'
-  catch /^Vim:Interrupt$/
-    execute 'set report=' . l:report
-    return
-  finally
-    normal! q
-    let l:transcript=getreg('s')
-    if exists('l:register')
-      call setreg('s', l:register)
-    endif
-  endtry
-  redir END
+
+  if exists('*execute')
+    let l:replacements=execute('call s:replacements(l:currentline, l:lastline, a:patterns, l:g)', '')
+  else
+    redir => l:replacements
+    call s:replacements(l:currentline, l:lastline, a:patterns, l:g)
+    redir END
+  endif
+
   if len(l:replacements) > 0
     " At least one instance of pattern was found.
-    let l:last=strpart(l:transcript, len(l:transcript) - 1)
+    let l:last=strpart(s:transcript, len(s:transcript) - 1)
     if l:last ==# 'l' || l:last ==# 'q' || l:last ==# ''
       " User bailed.
       return
@@ -96,6 +110,6 @@ function! scalpel#substitute(patterns, line1, line2, count) abort
   " Avoid unwanted "Backwards range given, OK to swap (y/n)?" messages.
   if l:currentline > l:firstline
     execute l:firstline . ',' . l:currentline . '-&' .l:g . 'ce'
-    execute 'set report=' . l:report
+    execute 'set report=' . s:report
   endif
 endfunction
