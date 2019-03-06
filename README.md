@@ -192,6 +192,11 @@ Scalpel is written and maintained by Greg Hurrell &lt;greg@hurrell.net&gt;.
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
 
 
+### 1.0.1 (6 March 2019)<a name="scalpel-101-6-march-2019" href="#user-content-scalpel-101-6-march-2019"></a>
+
+- Prefer <strong>`execute()`</strong> when available to avoid potential nested <strong>`:redir`</strong> issues.
+
+
 ### 1.0 (3 January 2019)<a name="scalpel-10-3-january-2019" href="#user-content-scalpel-10-3-january-2019"></a>
 
 - Perform multiple replacements per line even when <strong>`'gdefault'`</strong> is on.

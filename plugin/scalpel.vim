@@ -223,6 +223,11 @@
 "
 " # History
 "
+" ## 1.0.1 (6 March 2019)
+"
+" - Prefer |execute()| when available to avoid potential nested |:redir|
+"   issues.
+"
 " ## 1.0 (3 January 2019)
 "
 " - Perform multiple replacements per line even when |'gdefault'| is on.
