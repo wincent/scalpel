@@ -304,10 +304,10 @@ endfunction
 " Change all instances of current word (mnemonic: edit).
 execute 'nnoremap <Plug>(Scalpel) :' .
       \ s:command .
-      \ "/\\v<<C-R>=expand('<cword>')<CR>>//<Left>"
+      \ "/\\v<<C-R>=escape(expand('<cword>'), '$')<CR>>//<Left>"
 execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ s:command .
-      \ "/\\v<<C-R>=scalpel#cword(<SID>GetCurpos())<CR>>//<Left>"
+      \ "/\\v<<C-R>=escape(scalpel#cword(<SID>GetCurpos()), '$')<CR>>//<Left>"
 
 let s:map=get(g:, 'ScalpelMap', 1)
 if s:map
