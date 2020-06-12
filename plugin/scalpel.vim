@@ -241,7 +241,7 @@
 "
 " # History
 "
-" ## master (not yet released)
+" ## 1.1 (12 June 2020)
 "
 " - Automatically escape characters that may have special meaning for |/\v|
 "   (patch from Keng Kiat Lim, https://github.com/wincent/scalpel/pull/11).

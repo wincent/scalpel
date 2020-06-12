@@ -210,7 +210,7 @@ This list produced with:
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
 
 
-### master (not yet released)<a name="scalpel-master-not-yet-released" href="#user-content-scalpel-master-not-yet-released"></a>
+### 1.1 (12 June 2020)<a name="scalpel-11-12-june-2020" href="#user-content-scalpel-11-12-june-2020"></a>
 
 - Automatically escape characters that may have special meaning for <strong>`/\v`</strong> (patch from Keng Kiat Lim, https://github.com/wincent/scalpel/pull/11).
 
