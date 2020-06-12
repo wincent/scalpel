@@ -2,6 +2,12 @@
 " Licensed under the terms of the MIT license.
 
 ""
+" @header
+"
+" @image https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.png center
+"
+
+""
 " @plugin scalpel Scalpel plug-in for Vim
 "
 " # Intro
