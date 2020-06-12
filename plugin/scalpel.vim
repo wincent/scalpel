@@ -301,13 +301,18 @@ function! s:GetCurpos()
   return s:curpos
 endfunction
 
+" For escaping any characters which could have special meaning under \v (very
+" magic) semantics ie. all ASCII characters except '0'-'9', 'a'-'z', 'A'-'Z'
+" and '_'.
+let g:magic_chars='"' . escape("!\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~", '"/\|') . '"'
+
 " Change all instances of current word (mnemonic: edit).
 execute 'nnoremap <Plug>(Scalpel) :' .
       \ s:command .
-      \ "/\\v<<C-R>=escape(expand('<cword>'), '$')<CR>>//<Left>"
+      \ "/\\v<<C-R>=escape(expand('<cword>'), " . g:magic_chars . ")<CR>>//<Left>"
 execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ s:command .
-      \ "/\\v<<C-R>=escape(scalpel#cword(<SID>GetCurpos()), '$')<CR>>//<Left>"
+      \ "/\\v<<C-R>=escape(scalpel#cword(<SID>GetCurpos()), " . g:magic_chars . ")<CR>>//<Left>"
 
 let s:map=get(g:, 'ScalpelMap', 1)
 if s:map
