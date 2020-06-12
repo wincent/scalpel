@@ -1,4 +1,6 @@
-![Scalpel](https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.png)
+
+# scalpel<a name="scalpel-scalpel" href="#user-content-scalpel-scalpel"></a>
+
 
 ## Intro<a name="scalpel-intro" href="#user-content-scalpel-intro"></a>
 
@@ -188,8 +190,23 @@ git archive -o scalpel-$VERSION.zip HEAD -- .
 
 Scalpel is written and maintained by Greg Hurrell &lt;greg@hurrell.net&gt;.
 
+Other contributors that have submitted patches include (in alphabetical order):
+
+- Keng Kiat Lim
+
+This list produced with:
+
+```
+:read !git shortlog -s HEAD | grep -v 'Greg Hurrell' | cut -f 2-3 | sed -e 's/^/- /'
+```
+
 
 ## History<a name="scalpel-history" href="#user-content-scalpel-history"></a>
+
+
+### master (not yet released)<a name="scalpel-master-not-yet-released" href="#user-content-scalpel-master-not-yet-released"></a>
+
+- Automatically escape characters that may have special meaning for <strong>`/\v`</strong> (patch from Keng Kiat Lim, https://github.com/wincent/scalpel/pull/11).
 
 
 ### 1.0.1 (6 March 2019)<a name="scalpel-101-6-march-2019" href="#user-content-scalpel-101-6-march-2019"></a>

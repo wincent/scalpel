@@ -199,7 +199,21 @@ AUTHORS                                                        *scalpel-authors*
 
 Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
+Other contributors that have submitted patches include (in alphabetical
+order):
+
+- Keng Kiat Lim
+
+This list produced with:
+>
+    :read !git shortlog -s HEAD | grep -v 'Greg Hurrell' | cut -f 2-3 | sed -e 's/^/- /'
+<
 HISTORY                                                        *scalpel-history*
+
+master (not yet released) ~
+
+- Automatically escape characters that may have special meaning for |/\v|
+  (patch from Keng Kiat Lim, https://github.com/wincent/scalpel/pull/11).
 
 1.0.1 (6 March 2019) ~
 
