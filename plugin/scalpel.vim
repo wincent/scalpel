@@ -5,6 +5,7 @@
 " @header
 "
 " @image https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.png center
+" @image https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.gif center
 "
 
 ""

@@ -1,6 +1,9 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.png" />
 </p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.gif" />
+</p>
 
 # scalpel<a name="scalpel-scalpel" href="#user-content-scalpel-scalpel"></a>
 
