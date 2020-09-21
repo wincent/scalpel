@@ -324,6 +324,13 @@ function! s:GetCurpos()
   return s:curpos
 endfunction
 
+function! s:TransformSelection(selection)
+    if len(a:selection) == 1 && match(a:selection, '\v^([A-Za-z0-9_.-])$') == 0
+        return '<' . scalpel#cword(<SID>GetCurpos()) . '>'
+    endif
+    return a:selection
+endfunction
+
 " For escaping any characters which could have special meaning under \v (very
 " magic) semantics ie. all ASCII characters except '0'-'9', 'a'-'z', 'A'-'Z'
 " and '_'.
@@ -337,13 +344,21 @@ execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ s:command .
       \ "/\\v<<C-R>=escape(scalpel#cword(<SID>GetCurpos()), " . g:magic_chars . ")<CR>>//<Left>"
 
+" Change all instances of selection
+execute 'vnoremap <Plug>(ScalpelVisualSelection) :<C-u>' .
+      \ s:command .
+      \ "/\\v<C-R>=escape(scalpel#get_visual_selection(), " . g:magic_chars . ")<CR>//<Left>"
+execute 'vnoremap <Plug>(ScalpelVisualSmart) :<C-u>' .
+    \ s:command .
+    \ "/\\v<C-R>=escape(<SID>TransformSelection(scalpel#get_visual_selection()), " . g:magic_chars . ")<CR>//<Left>"
+
 let s:map=get(g:, 'ScalpelMap', 1)
 if s:map
   if !hasmapto('<Plug>(Scalpel)') && maparg('<leader>e', 'n') ==# ''
     nmap <unique> <Leader>e <Plug>(Scalpel)
   endif
-  if !hasmapto('<Plug>(ScalpelVisual)') && maparg('<leader>e', 'v') ==# ''
-    vmap <unique> <Leader>e <Plug>(ScalpelVisual)
+  if !hasmapto('<Plug>(ScalpelVisualSmart)') && maparg('<leader>e', 'v') ==# ''
+    vmap <unique> <Leader>e <Plug>(ScalpelVisualSmart)
   endif
 endif
 
