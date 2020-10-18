@@ -7,15 +7,15 @@
 " @image https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.png center
 " @image https://raw.githubusercontent.com/wincent/scalpel/media/scalpel.gif center
 "
-
+"
 ""
 " @plugin scalpel Scalpel plug-in for Vim
 "
 " Intro                                                            *scalpel-intro*
-
+"
 " Scalpel provides a streamlined shortcut for replacing all instances of the
 " word currently under the cursor throughout a file.
-
+"
 " In normal mode pressing `<Leader>e` (mnemonic: "edit") will display a prompt
 " pre-populated with the current word and with the cursor placed so that you
 " can start typing the desired replacement:
@@ -25,30 +25,30 @@
 " Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting
 " at the current word (unlike a normal `:%s` command, which starts at the top of
 " the file).
-
+"
 " Scalpel works similarly in visual mode with three different map behaviors. See
 " |scalpel-mappings| or |scalpel-configuration| for more information.
-
+"
 " Screencasts that show Scalpel in action:
-
+"
 " - https://youtu.be/YwMgnmZNWXA: "Vim screencast #13: Multiple Cursors"
 " - https://youtu.be/7Bx_mLDBtRc: "Vim screencast #14: *Ncgn"
 " - https://youtu.be/iNVyCPPYFzc: "Vim screencast #21: Scalpel update"
-
+"
 " Note that `:Scalpel` just calls through to an underlying `scalpel#substitute`
 " function that does the real work, ultimately calling Vim's own `:substitute`.
 " As such, be aware that whatever changes you make to the command-line prior
 " to pressing `<Enter>` must keep it a valid pattern, or bad things will happen.
-
+"
 " Installation                                              *scalpel-installation*
-
+"
 " To install Scalpel, use your plug-in management system of choice.
-
+"
 " If you don't have a "plug-in management system of choice" and your version
 " of Vim has `packages` support (ie. `+packages` appears in the output of
 " `:version`) then you can simply place the plugin at a location under your
 " `'packpath'` (eg. `~/.vim/pack/bundle/start/scalpel` or similar).
-
+"
 " For older versions of Vim, I recommend
 " [Pathogen](https://github.com/tpope/vim-pathogen) due to its simplicity and
 " robustness. Assuming that you have Pathogen installed and configured, and
@@ -66,9 +66,9 @@
 " >
 "     :call pathogen#helptags()
 " <
-
+"
 " Configuration                                            *scalpel-configuration*
-
+"
 " The default mappings can be suppressed by setting:
 " >
 "     let g:ScalpelMap=0
@@ -81,7 +81,7 @@
 " In any case, Scalpel won't overwrite any pre-existing mapping that you might
 " have defined for `<Leader>e`, nor will it create an unnecessary redundant
 " mapping if you've already mapped something to `<Plug>(Scalpel)`.
-
+"
 " The `:Scalpel` command name can be overridden if desired. For example, you
 " could shorten it to `:S` with:
 " >
@@ -114,11 +114,11 @@
 "     let g:ScalpelLoaded=1
 " <
 " in your `~/.vimrc`.
-
+"
 " Mappings                                                      *scalpel-mappings*
-
+"
 " <Plug>(Scalpel)<<Plug>(Scalpel)
-
+"
 " Displays a prompt pre-populated with the current word and with the cursor
 " placed so that you can start typing the desired replacement:
 " >
@@ -127,89 +127,89 @@
 " Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting
 " at the current word (unlike a normal `:%s` command, which starts at the top of
 " the file).
-
+"
 " Default map: <leader>e.
-
+"
 " <Plug>(ScalpelVisual)
-
+"
 " Works similarly to |<Plug>(Scalpel)|, except that it scopes itself to the current
 " visual selection rather than operating over the entire file.
-
+"
 " Default map: <leader>e
-
+"
 " <Plug>(ScalpelVisualSelection)
-
+"
 " Works similarly to |<Plug>(Scalpel)|, except that it populates the match pattern
 " with the visual selection rather than <cword>.
-
+"
 " Unmapped by default. Example map:
 " >
 "     vnoremap <leader>x <Plug>(ScalpelVisualSelection)
 " <
-
+"
 " <Plug>(ScalpelVisualSmart)
-
+"
 " Works similarly to |<Plug>(ScalpelVisualSelection)|, except that when the visual
 " selection is only a single character, it falls back on <cword>-like behavior to
 " assume a substitution pattern when the character is alphanumeric, an
 " underscore, a hyphen, or a period.
-
+"
 " Unmapped by default. Example map:
 " >
 "     vnoremap <leader>y <Plug>(ScalpelVisualSelection)
 " <
-
+"
 " FAQ                                                                *scalpel-faq*
-
+"
 " Why use Scalpel rather than a built-in alternative? ~
-
+"
 " Scalpel is a lightweight plug-in that provides subtle but valuable
 " improvements to the experience you'd get by using Vim's built-in
 " functionality.
-
+"
 " Compared to writing a |:substitute| command manually:
-
+"
 " - Scalpel is quickly activated by a mapping.
 " - Scalpel prepopulates the search pattern with the word currently under the
 "   cursor.
 " - Scalpel avoids a jarring jump to the top of the file, instead starting
 "   replacements at the current location.
-
+"
 " Compared to a mapping such as "*Ncgn":
-
+"
 " - Scalpel allows you to preview the location at which each change will occur
 "   instead of performing the change blindly.
-
+"
 " Website                                                        *scalpel-website*
-
+"
 " The official Scalpel source code repo is at:
-
+"
 " http://git.wincent.com/scalpel.git
-
+"
 " Mirrors exist at:
-
+"
 " - https://github.com/wincent/scalpel
 " - https://gitlab.com/wincent/scalpel
 " - https://bitbucket.org/ghurrell/scalpel
-
+"
 " Official releases are listed at:
-
+"
 " http://www.vim.org/scripts/script.php?script_id=5381
-
+"
 " License                                                        *scalpel-license*
-
+"
 " Copyright (c) 2016-present Greg Hurrell
-
+"
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to
 " deal in the Software without restriction, including without limitation the
 " rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
 " sell copies of the Software, and to permit persons to whom the Software is
 " furnished to do so, subject to the following conditions:
-
+"
 " The above copyright notice and this permission notice shall be included in
 " all copies or substantial portions of the Software.
-
+"
 " THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 " IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 " FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -217,18 +217,18 @@
 " LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 " FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 " IN THE SOFTWARE.
-
+"
 " Development                                                *scalpel-development*
-
+"
 " Contributing patches ~
-
+"
 " Patches can be sent via mail to greg@hurrell.net, or as GitHub pull requests
 " at: https://github.com/wincent/scalpel/pulls
-
+"
 " Cutting a new release ~
-
+"
 " At the moment the release process is manual:
-
+"
 " - Perform final sanity checks and manual testing.
 " - Update the [scalpel-history](#user-content-scalpel-history) section of the
 "   documentation.
@@ -254,57 +254,57 @@
 "     git archive -o scalpel-$VERSION.zip HEAD -- .
 " <
 " - Upload to http://www.vim.org/scripts/script.php?script_id=5381
-
+"
 " Authors                                                        *scalpel-authors*
-
+"
 " Scalpel is written and maintained by Greg Hurrell <greg@hurrell.net>.
-
+"
 " Other contributors that have submitted patches include (in alphabetical
 " order):
-
+"
 " - Keng Kiat Lim
-
+"
 " This list produced with:
 " >
 "     :read !git shortlog -s HEAD | grep -v 'Greg Hurrell' | cut -f 2-3 | sed -e 's/^/- /'
 " <
 " History                                                        *scalpel-history*
-
+"
 " 1.1 (12 June 2020) ~
-
+"
 " - Automatically escape characters that may have special meaning for |/\v|
 "   (patch from Keng Kiat Lim, https://github.com/wincent/scalpel/pull/11).
-
+"
 " 1.0.1 (6 March 2019) ~
-
+"
 " - Prefer |execute()| when available to avoid potential nested |:redir| issues.
-
+"
 " 1.0 (3 January 2019) ~
-
+"
 " - Perform multiple replacements per line even when |'gdefault'| is on.
-
+"
 " 0.5 (28 July 2018) ~
-
+"
 " - Fix problem with |Visual| mode operation on older versions of Vim (GitHub
 "   issue #8).
-
+"
 " 0.4 (23 July 2018) ~
-
+"
 " - Fix problem with replacement patterns containing the number 1 (GitHub
 "   issue #7).
-
+"
 " 0.3 (10 May 2018) ~
-
+"
 " - Fix compatibility with older versions of Vim that don't implement
 "   |getcurpos()|.
-
+"
 " 0.2 (13 June 2016) ~
-
+"
 " - Support visual mode.
 " - Do not show "N substitutions on N lines" messages.
-
+"
 " 0.1 (29 April 2016) ~
-
+"
 " - Initial release.
 
 " Provide users with means to prevent loading, as recommended in `:h
