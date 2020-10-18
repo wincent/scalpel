@@ -28,7 +28,7 @@ Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting
 at the current word (unlike a normal `:%s` command, which starts at the top of
 the file).
 
-Scalpel works similarly in visual mode with three different map behaviors. See
+Scalpel works similarly in visual mode with two different map behaviors. See
 |scalpel-mappings| or |scalpel-configuration| for more information.
 
 Screencasts that show Scalpel in action:
@@ -147,18 +147,6 @@ with the visual selection rather than <cword>.
 Unmapped by default. Example map:
 >
     vnoremap <leader>x <Plug>(ScalpelVisualSelection)
-<
-
-<Plug>(ScalpelVisualSmart)
-
-Works similarly to |<Plug>(ScalpelVisualSelection)|, except that when the visual
-selection is only a single character, it falls back on <cword>-like behavior to
-assume a substitution pattern when the character is alphanumeric, an
-underscore, a hyphen, or a period.
-
-Unmapped by default. Example map:
->
-    vnoremap <leader>y <Plug>(ScalpelVisualSelection)
 <
 
 FAQ                                                                *scalpel-faq*
