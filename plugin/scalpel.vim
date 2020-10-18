@@ -357,8 +357,8 @@ if s:map
   if !hasmapto('<Plug>(Scalpel)') && maparg('<leader>e', 'n') ==# ''
     nmap <unique> <Leader>e <Plug>(Scalpel)
   endif
-  if !hasmapto('<Plug>(ScalpelVisualSmart)') && maparg('<leader>e', 'v') ==# ''
-    vmap <unique> <Leader>e <Plug>(ScalpelVisualSmart)
+  if !hasmapto('<Plug>(ScalpelVisual') && maparg('<leader>e', 'v') ==# ''
+    vmap <unique> <Leader>e <Plug>(ScalpelVisual)
   endif
 endif
 
