@@ -4,12 +4,14 @@ CONTENTS                                                      *scalpel-contents*
 
 1. Intro            |scalpel-intro|
 2. Installation     |scalpel-installation|
-3. FAQ              |scalpel-faq|
-4. Website          |scalpel-website|
-5. License          |scalpel-license|
-6. Development      |scalpel-development|
-7. Authors          |scalpel-authors|
-8. History          |scalpel-history|
+3. Configuration    |scalpel-configuration|
+4. Mappings         |scalpel-mappings|
+5. FAQ              |scalpel-faq|
+6. Website          |scalpel-website|
+7. License          |scalpel-license|
+8. Development      |scalpel-development|
+9. Authors          |scalpel-authors|
+10. History          |scalpel-history|
 
 INTRO                                                            *scalpel-intro*
 
@@ -26,8 +28,8 @@ Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting
 at the current word (unlike a normal `:%s` command, which starts at the top of
 the file).
 
-Scalpel works similarly in visual mode, except that it scopes itself to the
-current visual selection rather than operating over the entire file.
+Scalpel works similarly in visual mode with three different map behaviors. See
+|scalpel-mappings| or |scalpel-configuration| for more information.
 
 Screencasts that show Scalpel in action:
 
@@ -39,39 +41,6 @@ Note that `:Scalpel` just calls through to an underlying `scalpel#substitute`
 function that does the real work, ultimately calling Vim's own `:substitute`.
 As such, be aware that whatever changes you make to the command-line prior
 to pressing `<Enter>` must keep it a valid pattern, or bad things will happen.
-
-The mapping can be suppressed by setting:
->
-    let g:ScalpelMap=0
-<
-Or overridden:
->
-    " Use <Leader>s instead of default <Leader>e:
-    nmap <Leader>s <Plug>(Scalpel)
-<
-In any case, Scalpel won't overwrite any pre-existing mapping that you might
-have defined for `<Leader>e`, nor will it create an unnecessary redundant
-mapping if you've already mapped something to `<Plug>(Scalpel)`.
-
-The `:Scalpel` command name can be overridden if desired. For example, you
-could shorten it to `:S` with:
->
-    let g:ScalpelCommand='S'
-<
-Then your Scalpel prompt would look like:
->
-    :S/\v<foo>//
-<
-The command can be entirely suppressed by setting `g:ScalpelCommand` to an
-empty string:
->
-    let g:ScalpelCommand=''
-<
-Finally, all plug-in functionality can be deactivated by setting:
->
-    let g:ScalpelLoaded=1
-<
-in your `~/.vimrc`.
 
 INSTALLATION                                              *scalpel-installation*
 
@@ -99,6 +68,99 @@ To generate help tags under Pathogen, you can do so from inside Vim with:
 >
     :call pathogen#helptags()
 <
+
+CONFIGURATION                                            *scalpel-configuration*
+
+The default mappings can be suppressed by setting:
+>
+    let g:ScalpelMap=0
+<
+Or overridden:
+>
+    " Use <Leader>s instead of default <Leader>e:
+    nmap <Leader>s <Plug>(Scalpel)
+<
+In any case, Scalpel won't overwrite any pre-existing mapping that you might
+have defined for `<Leader>e`, nor will it create an unnecessary redundant
+mapping if you've already mapped something to `<Plug>(Scalpel)`.
+
+The `:Scalpel` command name can be overridden if desired. For example, you
+could shorten it to `:S` with:
+>
+    let g:ScalpelCommand='S'
+<
+Then your Scalpel prompt would look like:
+>
+    :S/\v<foo>//
+<
+The command can be entirely suppressed by setting `g:ScalpelCommand` to an
+empty string:
+>
+    let g:ScalpelCommand=''
+<
+The default visual mode behavior restricts substituion to the selection range.
+This is the |<Plug>(ScalpelVisual)| map. An additional visual mode map is
+available, which pulls the visual selection in as the substitution match
+pattern. This is the |<Plug>(ScalpelVisualSelection)| map. The command can be
+mapped to complement the default visual mode behavior. For example:
+>
+    vnormap <leader>x <Plug>(ScalpelVisualSelection)
+<
+You might alternatively replace the default visual mode behavior by overriding
+the default maps lhs. For example:
+>
+    vnormap <leader>e <Plug>(ScalpelVisualSelection)
+<
+Finally, all plug-in functionality can be deactivated by setting:
+>
+    let g:ScalpelLoaded=1
+<
+in your `~/.vimrc`.
+
+MAPPINGS                                                      *scalpel-mappings*
+
+<Plug>(Scalpel)<<Plug>(Scalpel)
+
+Displays a prompt pre-populated with the current word and with the cursor
+placed so that you can start typing the desired replacement:
+>
+    :Scalpel/\v<foo>//
+<
+Press `<Enter>` and Scalpel will prompt to confirm each substitution, starting
+at the current word (unlike a normal `:%s` command, which starts at the top of
+the file).
+
+Default map: <leader>e.
+
+<Plug>(ScalpelVisual)
+
+Works similarly to |<Plug>(Scalpel)|, except that it scopes itself to the current
+visual selection rather than operating over the entire file.
+
+Default map: <leader>e
+
+<Plug>(ScalpelVisualSelection)
+
+Works similarly to |<Plug>(Scalpel)|, except that it populates the match pattern
+with the visual selection rather than <cword>.
+
+Unmapped by default. Example map:
+>
+    vnoremap <leader>x <Plug>(ScalpelVisualSelection)
+<
+
+<Plug>(ScalpelVisualSmart)
+
+Works similarly to |<Plug>(ScalpelVisualSelection)|, except that when the visual
+selection is only a single character, it falls back on <cword>-like behavior to
+assume a substitution pattern when the character is alphanumeric, an
+underscore, a hyphen, or a period.
+
+Unmapped by default. Example map:
+>
+    vnoremap <leader>y <Plug>(ScalpelVisualSelection)
+<
+
 FAQ                                                                *scalpel-faq*
 
 Why use Scalpel rather than a built-in alternative? ~

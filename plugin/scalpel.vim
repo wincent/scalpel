@@ -345,9 +345,30 @@ execute 'vnoremap <Plug>(ScalpelVisual) :' .
       \ "/\\v<<C-R>=escape(scalpel#cword(<SID>GetCurpos()), " . g:magic_chars . ")<CR>>//<Left>"
 
 " Change all instances of selection
+""
+" @mapping <Plug>(ScalpelVisualSelection)
+"
+" Works similarly to <Plug>(Scalpel), except that it populates the match
+" pattern with the visual selection rather than <cword>. Unmapped by default.
+" Example map:
+"
+" ```
+" vnoremap <leader>x <Plug>(ScalpelVisualSelection)
+" ```
 execute 'vnoremap <Plug>(ScalpelVisualSelection) :<C-u>' .
       \ s:command .
       \ "/\\v<C-R>=escape(scalpel#get_visual_selection(), " . g:magic_chars . ")<CR>//<Left>"
+""
+" @mapping <Plug>(ScalpelVisualSmart)
+"
+" Works similarly to <Plug>(ScalpelVisualSelection), except that when the
+" visual selection is only a single character, it falls back on <cword>-like
+" behavior to assume a substitution pattern when the character is
+" alphanumeric, an underscore, a hyphen, or a period.  Example map:
+"
+" ```
+" vnoremap <leader>y <Plug>(ScalpelVisualSmart)
+" ```
 execute 'vnoremap <Plug>(ScalpelVisualSmart) :<C-u>' .
     \ s:command .
     \ "/\\v<C-R>=escape(<SID>TransformSelection(scalpel#get_visual_selection()), " . g:magic_chars . ")<CR>//<Left>"
@@ -355,9 +376,36 @@ execute 'vnoremap <Plug>(ScalpelVisualSmart) :<C-u>' .
 let s:map=get(g:, 'ScalpelMap', 1)
 if s:map
   if !hasmapto('<Plug>(Scalpel)') && maparg('<leader>e', 'n') ==# ''
+    ""
+    " @mapping <Plug>(Scalpel)
+    "
+    " Scalpel maps <leader>e to |<Plug>(Scalpel)|, which displays a prompt
+    " pre-populated with the current word and with the cursor placed so that
+    " you can start typing the desired replacement:
+    " >
+    "     :Scalpel/\v<foo>//
+    " <
+    " Press `<Enter>` and Scalpel will prompt to confirm each substitution,
+    " starting at the current word (unlike a normal `:%s` command, which
+    " starts at the top of the file).
+    "
+    " ```
+    " " Instead of <leader>e, use <leader>x.
+    " nmap <leader>x <Plug>(Scalpel)
+    " ```
     nmap <unique> <Leader>e <Plug>(Scalpel)
   endif
   if !hasmapto('<Plug>(ScalpelVisual)') && maparg('<leader>e', 'v') ==# ''
+    ""
+    " @mapping <Plug>(ScalpelVisual)
+    "
+    " Works similarly to <Plug>(Scalpel), except that it scopes itself to the
+    " current visual selection rather than operating over the entire file.
+    "
+    " ```
+    " " Instead of <leader>e, use <leader>y.
+    " nmap <leader>y <Plug>(ScalpelVisual)
+    " ```
     vmap <unique> <Leader>e <Plug>(ScalpelVisual)
   endif
 endif
