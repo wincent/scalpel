@@ -143,11 +143,7 @@
 "
 " # Website
 "
-" The official Scalpel source code repo is at:
-"
-" http://git.wincent.com/scalpel.git
-"
-" Mirrors exist at:
+" Source code:
 "
 " - https://github.com/wincent/scalpel
 " - https://gitlab.com/wincent/scalpel
